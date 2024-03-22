@@ -15,7 +15,6 @@
 
 body {
   font-family: "Open Sans", sans-serif;
-  background: #f6f9ff;
   color: #444444;
 }
 
@@ -28,6 +27,42 @@ a:hover {
   color: #717ff5;
   text-decoration: none;
 }
+
+/* --slider */
+swiper-container {
+  width: 100%;
+  height: 10%;
+}
+
+swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.story{
+  height: 56px;
+  width: 56px;
+}
+
+.border{
+  border-radius: ;
+  background: rgb(219,62,130);
+background: radial-gradient(circle, rgba(219,62,130,1) 0%, rgba(233,229,148,1) 100%);
+}
+.prev{
+  block
+}
+
 
 h1,
 h2,
@@ -42,8 +77,6 @@ h6 {
 # Main
 --------------------------------------------------------------*/
 #main {
-  margin-top: 60px;
-  padding: 20px 30px;
   transition: all 0.3s;
 }
 
@@ -234,9 +267,9 @@ h6 {
 
 .card-title {
   padding: 20px 0 15px 0;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 500;
-  color: #012970;
+  color: #454648;
   font-family: "Poppins", sans-serif;
 }
 
@@ -374,6 +407,13 @@ h6 {
   font-weight: 700;
   color: #012970;
   font-family: "Nunito", sans-serif;
+}
+
+.my-profile{
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  line-height: 0.2;
+  color: var(--bs-heading-color);
 }
 
 .header {
@@ -598,7 +638,7 @@ h6 {
 # Sidebar
 --------------------------------------------------------------*/
 .sidebar {
-  position: fixed;
+  /* position: fixed; */
   top: 60px;
   left: 0;
   bottom: 0;
@@ -633,7 +673,7 @@ h6 {
 
   #main,
   #footer {
-    margin-left: 300px;
+
   }
 }
 
