@@ -28,10 +28,24 @@ a:hover {
   text-decoration: none;
 }
 
+
+/* ---Form section start */
+.form-body{
+  background: rgb(131,58,180);
+background: linear-gradient(165deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+
 /* --slider */
+.story-fs{
+  font-size:0.75rem;
+}
 swiper-container {
   width: 100%;
-  height: 10%;
+  height: 15%;
 }
 
 swiper-slide {
@@ -50,8 +64,25 @@ swiper-slide img {
   object-fit: cover;
 }
 .story{
-  height: 56px;
-  width: 56px;
+  /* height: 56px; */
+  width: 100%;
+}
+.story-img{
+  border-radius: 100%;
+  padding: 2px;
+  background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+  ;}
+
+.story img{
+  width: 70px;
+  height: 70px;
+  margin: auto;
+  border: 3px solid white !important;
+  /* width: 150px; */
+}
+
+.story h2{
+  overflow: hidden;
 }
 
 .border{

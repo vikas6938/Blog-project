@@ -55,7 +55,6 @@
             <a href="index.html" class="logo d-flex align-items-center">
               <img src="assets/img/logo.png" alt="" width="">
             </a>
-            <i class="bi bi-list toggle-sidebar-btn"></i>
           </div><!-- End Logo -->
 
           <li class="nav-item">
@@ -226,21 +225,46 @@
             <!-- Left side columns -->
             <div class="col-lg-8">
               <swiper-container class="mySwiper mb-3" navigation="true" space-between="" slides-per-view="7">
-                <swiper-slide class="story">
-                  <div class="story">
-                    <img src="assets/img/surti.jpg" alt="Profile" class="rounded-circle border">
-                    <div class="">
-                      <h2 class="fs-6">Surties </h2>
+                <% users.forEach((user)=>{ %>
+                  <swiper-slide class="story">
+                    <div class="story-item">
+                      <div class="story-img">
+                        <img src="<%= user.img %>" alt="Profile" class="rounded-circle border">
+                      </div>
+                      <div class="">
+                        <h2 class="story-fs">
+                          <%= user.name %>
+                          <% if(user.isVerified){ %>
+                            <svg aria-label="Verified" class="x1lliihq x1n2onr6" fill="rgb(0, 149, 246)" height="12"
+                              role="img" viewBox="0 0 40 40" width="12">
+                              <title>Verified</title>
+                              <path
+                                d="M19.998 3.094 14.638 0l-2.972 5.15H5.432v6.354L0 14.64 3.094 20 0 25.359l5.432 3.137v5.905h5.975L14.638 40l5.36-3.094L25.358 40l3.232-5.6h6.162v-6.01L40 25.359 36.905 20 40 14.641l-5.248-3.03v-6.46h-6.419L25.358 0l-5.36 3.094Zm7.415 11.225 2.254 2.287-11.43 11.5-6.835-6.93 2.244-2.258 4.587 4.581 9.18-9.18Z"
+                                fill-rule="evenodd"></path>
+                            </svg>
+                          <% } %>
+
+                        </h2>
+                      </div>
                     </div>
-                  </div>
-                </swiper-slide>
-                <swiper-slide class="story">
+                  </swiper-slide>
+                  <%})%>
+
+
+
+                    <!-- <swiper-slide class="story">
                   <div class="story">
-                    <div class="story-img">
                       <img src="assets/img/riya.jpg" alt="Profile" class="rounded-circle border">
-                    </div>
+                      <h2 class="story-fs">riyabhakta08</h2>
                     <div class=" text-center">
-                      <h2 class="fs-6">riyabhakta08</h2>
+                    </div>
+                  </div>
+                </swiper-slide>
+                <swiper-slide class="story">
+                  <div class="story ">
+                    <img src="assets/img/icity.jpg" alt="Profile" class="rounded-circle border">
+                    <div class="">
+                      <h2 class="story-fs">iamsuratcity</h2>
                     </div>
                   </div>
                 </swiper-slide>
@@ -283,15 +307,7 @@
                       <h2 class="fs-6">__nh.__ </h2>
                     </div>
                   </div>
-                </swiper-slide>
-                <swiper-slide class="story">
-                  <div class="story ">
-                    <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle border">
-                    <div class="">
-                      <h2 class="fs-6">__nh.__ </h2>
-                    </div>
-                  </div>
-                </swiper-slide>
+                </swiper-slide> -->
 
               </swiper-container>
 
@@ -305,7 +321,16 @@
                     <div class="col-lg-12">
                       <div class="card">
                         <div class="card-body">
-                          <h5 class="card-title">Parul Univercity</h5>
+                          <h5 class="card-title">Parul Univercity
+
+                            <svg aria-label="Verified" class="x1lliihq x1n2onr6" fill="rgb(0, 149, 246)" height="12"
+                              role="img" viewBox="0 0 40 40" width="12">
+                              <title>Verified</title>
+                              <path
+                                d="M19.998 3.094 14.638 0l-2.972 5.15H5.432v6.354L0 14.64 3.094 20 0 25.359l5.432 3.137v5.905h5.975L14.638 40l5.36-3.094L25.358 40l3.232-5.6h6.162v-6.01L40 25.359 36.905 20 40 14.641l-5.248-3.03v-6.46h-6.419L25.358 0l-5.36 3.094Zm7.415 11.225 2.254 2.287-11.43 11.5-6.835-6.93 2.244-2.258 4.587 4.581 9.18-9.18Z"
+                                fill-rule="evenodd"></path>
+                            </svg>
+                          </h5>
 
                           <!-- Line Chart -->
 
