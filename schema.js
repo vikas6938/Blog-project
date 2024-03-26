@@ -1,15 +1,14 @@
 const mongoose = require('mongoose');
 
-const userSchema = new mongoose.Schema({
+const userSchema = mongoose.Schema({
     name : String,
     email : {
         type: String,
-        unique : true
     },
     password: String
 })
 
-const postSchema = new mongoose.Schema({
+const postSchema = mongoose.Schema({
     post : {
         type: String,
         required: true,
@@ -28,7 +27,7 @@ const postSchema = new mongoose.Schema({
     }
 })
 
-const userModel = mongoose.model('user', userSchema)
-const postModel = mongoose.model('post', postSchema)
+const userModel = mongoose.model('users', userSchema)
+const postModel = mongoose.model('posts', postSchema)
 
 module.exports = {userModel, postModel}

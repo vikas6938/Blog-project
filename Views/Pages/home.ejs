@@ -221,38 +221,88 @@
         </section>
         <section class="section dashboard">
           <div class="row">
-
-            <!-- Left side columns -->
-            <div class="col-lg-8">
-              <swiper-container class="mySwiper mb-3" navigation="true" space-between="" slides-per-view="7">
-                <% users.forEach((user)=>{ %>
-                  <swiper-slide class="story">
-                    <div class="story-item">
-                      <div class="story-img">
-                        <img src="<%= user.img %>" alt="Profile" class="rounded-circle border">
+            <% users.forEach((user)=>{ %>
+              <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog ">
+                  <div class="modal-content ">
+                    <div class="modal-header">
+                      <!-- Story in model strt -->
+                      <div class="row justify-content-center ">
+                        <div class="col-lg-4">
+                          <div class="model-story-img">
+                            <img src="<%= user.img %>" alt="Profile" class="rounded-circle border"
+                              data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                          </div>
+                        </div>
+                        <div class="col-lg-8">
+                          <div class="d-flex justify-content-center align-items-center">
+                            <h2 class="model-story-fs me-3">
+                              <%= user.name %>
+                                <% if(user.isVerified){ %>
+                                  <svg aria-label="Verified" class="x1lliihq x1n2onr6" fill="rgb(0, 149, 246)"
+                                    height="12" role="img" viewBox="0 0 40 40" width="12">
+                                    <title>Verified</title>
+                                    <path
+                                      d="M19.998 3.094 14.638 0l-2.972 5.15H5.432v6.354L0 14.64 3.094 20 0 25.359l5.432 3.137v5.905h5.975L14.638 40l5.36-3.094L25.358 40l3.232-5.6h6.162v-6.01L40 25.359 36.905 20 40 14.641l-5.248-3.03v-6.46h-6.419L25.358 0l-5.36 3.094Zm7.415 11.225 2.254 2.287-11.43 11.5-6.835-6.93 2.244-2.258 4.587 4.581 9.18-9.18Z"
+                                      fill-rule="evenodd"></path>
+                                  </svg>
+                                  <% } %>
+                            </h2>
+                            <div class="btn-group mb-4" role="group" aria-label="Basic mixed styles example">
+                              <button type="button" class="btn btn-color me-2">Following</button>
+                              <button type="button" class="btn btn-color me-2">Messages</button>
+                              <button type="button" class="btn btn-color"><i
+                                  class="bi bi-person-plus-fill fs-6"></i></button>
+                            </div>
+                          </div>
+                          <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                            <h1 class="fs-6 me-3">33 <span class="fs-6 fw-bold">Post</span> </h1>
+                            <h2 class="fs-6 me-3">1,705 <span class="fs-6 fw-bold">Follwers</span> </h2>
+                            <h3 class="fs-6">1,205 <span class="fs-6 fw-bold">Following</span></h3>
+                          </div>
+                        </div>
                       </div>
-                      <div class="">
-                        <h2 class="story-fs">
-                          <%= user.name %>
-                          <% if(user.isVerified){ %>
-                            <svg aria-label="Verified" class="x1lliihq x1n2onr6" fill="rgb(0, 149, 246)" height="12"
-                              role="img" viewBox="0 0 40 40" width="12">
-                              <title>Verified</title>
-                              <path
-                                d="M19.998 3.094 14.638 0l-2.972 5.15H5.432v6.354L0 14.64 3.094 20 0 25.359l5.432 3.137v5.905h5.975L14.638 40l5.36-3.094L25.358 40l3.232-5.6h6.162v-6.01L40 25.359 36.905 20 40 14.641l-5.248-3.03v-6.46h-6.419L25.358 0l-5.36 3.094Zm7.415 11.225 2.254 2.287-11.43 11.5-6.835-6.93 2.244-2.258 4.587 4.581 9.18-9.18Z"
-                                fill-rule="evenodd"></path>
-                            </svg>
-                          <% } %>
-
-                        </h2>
-                      </div>
+                      <!-- Story in model end -->
+                      <button type="button" class="fs-6 btn-close m-0" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                     </div>
-                  </swiper-slide>
-                  <%})%>
+                    <div class="modal-body">
+                      ...
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <%})%>
+                <!-- Left side columns -->
+                <div class="col-lg-8">
+                  <swiper-container class="mySwiper mb-3" navigation="true" space-between="" slides-per-view="7">
+                    <% users.forEach((user)=>{ %>
+                      <swiper-slide class="story">
+                        <div class="story-item">
+                          <div class="story-img">
+                            <img src="<%= user.img %>" alt="Profile" class="rounded-circle border"
+                              data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="setImages('<%= user.img %>', '<%= user.isVerified %>')">
+                          </div>
+                          <div class="">
+                            <h2 class="story-fs">
+                              <%= user.name %>
+                                <% if(user.isVerified){ %>
+                                  <svg aria-label="Verified" class="x1lliihq x1n2onr6" fill="rgb(0, 149, 246)"
+                                    height="12" role="img" viewBox="0 0 40 40" width="12">
+                                    <title>Verified</title>
+                                    <path
+                                      d="M19.998 3.094 14.638 0l-2.972 5.15H5.432v6.354L0 14.64 3.094 20 0 25.359l5.432 3.137v5.905h5.975L14.638 40l5.36-3.094L25.358 40l3.232-5.6h6.162v-6.01L40 25.359 36.905 20 40 14.641l-5.248-3.03v-6.46h-6.419L25.358 0l-5.36 3.094Zm7.415 11.225 2.254 2.287-11.43 11.5-6.835-6.93 2.244-2.258 4.587 4.581 9.18-9.18Z"
+                                      fill-rule="evenodd"></path>
+                                  </svg>
+                                <% } %>
+                            </h2>
+                          </div>
+                        </div>
+                      </swiper-slide>
+                      <%})%>
 
-
-
-                    <!-- <swiper-slide class="story">
+                        <!-- <swiper-slide class="story">
                   <div class="story">
                       <img src="assets/img/riya.jpg" alt="Profile" class="rounded-circle border">
                       <h2 class="story-fs">riyabhakta08</h2>
@@ -309,372 +359,373 @@
                   </div>
                 </swiper-slide> -->
 
-              </swiper-container>
+                  </swiper-container>
 
 
-              <div class="row">
+                  <div class="row">
 
-                <!-- Customers Card -->
-                <section class="section ">
-                  <div class="row justify-content-center">
+                    <!-- Customers Card -->
+                    <section class="section ">
+                      <div class="row justify-content-center">
 
-                    <div class="col-lg-12">
-                      <div class="card">
-                        <div class="card-body">
-                          <h5 class="card-title">Parul Univercity
+                        <div class="col-lg-12">
+                          <div class="card">
+                            <div class="card-body">
+                              <h5 class="card-title">Parul Univercity
 
-                            <svg aria-label="Verified" class="x1lliihq x1n2onr6" fill="rgb(0, 149, 246)" height="12"
-                              role="img" viewBox="0 0 40 40" width="12">
-                              <title>Verified</title>
-                              <path
-                                d="M19.998 3.094 14.638 0l-2.972 5.15H5.432v6.354L0 14.64 3.094 20 0 25.359l5.432 3.137v5.905h5.975L14.638 40l5.36-3.094L25.358 40l3.232-5.6h6.162v-6.01L40 25.359 36.905 20 40 14.641l-5.248-3.03v-6.46h-6.419L25.358 0l-5.36 3.094Zm7.415 11.225 2.254 2.287-11.43 11.5-6.835-6.93 2.244-2.258 4.587 4.581 9.18-9.18Z"
-                                fill-rule="evenodd"></path>
-                            </svg>
-                          </h5>
+                                <svg aria-label="Verified" class="x1lliihq x1n2onr6" fill="rgb(0, 149, 246)" height="12"
+                                  role="img" viewBox="0 0 40 40" width="12">
+                                  <title>Verified</title>
+                                  <path
+                                    d="M19.998 3.094 14.638 0l-2.972 5.15H5.432v6.354L0 14.64 3.094 20 0 25.359l5.432 3.137v5.905h5.975L14.638 40l5.36-3.094L25.358 40l3.232-5.6h6.162v-6.01L40 25.359 36.905 20 40 14.641l-5.248-3.03v-6.46h-6.419L25.358 0l-5.36 3.094Zm7.415 11.225 2.254 2.287-11.43 11.5-6.835-6.93 2.244-2.258 4.587 4.581 9.18-9.18Z"
+                                    fill-rule="evenodd"></path>
+                                </svg>
+                              </h5>
 
-                          <!-- Line Chart -->
+                              <!-- Line Chart -->
 
-                          <!-- End Line CHart -->
+                              <!-- End Line CHart -->
 
+                            </div>
+                          </div>
                         </div>
                       </div>
+                    </section>
+                    <!-- End Customers Card -->
+
+
+
+                  </div>
+                </div><!-- End Left side columns -->
+
+                <!-- Right side columns -->
+                <div class="col-lg-4">
+
+                  <div id="header" class="header d-flex align-items-center mb-1">
+
+
+                    <nav class="header-nav">
+                      <ul class="d-flex align-items-center justify-content-between">
+
+                        <li class="nav-item dropdown pe-3 w-100 ">
+                          <a class="nav-link nav-profile d-flex align-items-center justify-content-between pe-0"
+                            href="#" data-bs-toggle="dropdown">
+                            <div>
+                              <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle ">
+                            </div>
+                            <div class="my-profile ms-1">
+                              <h2 class="d-none d-md-block fs-6 ps-2 fw-bold">i.m.viks</h2>
+                              <span class="d-none d-md-block dropdown-toggle ps-2 fw-semibold"> Vikas Borse</span>
+                            </div>
+                            <div class="">
+                            </div>
+                          </a><!-- End Profile Iamge Icon -->
+
+                        </li><!-- End Profile Nav -->
+                        <h2 class="d-none d-md-block fs-6 ps-2 fw-bold text-info ms-5"> Switch</h2>
+
+                      </ul>
+                    </nav>
+
+                  </div>
+                  <!-- Recent Activity -->
+
+                  <div class="card">
+                    <div class="filter">
+                      <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                        <li class="dropdown-header text-start">
+                          <h6>Filter</h6>
+                        </li>
+
+                        <li><a class="dropdown-item" href="#">Today</a></li>
+                        <li><a class="dropdown-item" href="#">This Month</a></li>
+                        <li><a class="dropdown-item" href="#">This Year</a></li>
+                      </ul>
+                    </div>
+                    <!-- Right Profile Information Start -->
+                    <div class="card-body">
+                      <div class="d-flex align-items-center justify-content-between">
+
+                        <h5 class="card-title">Suggested for you </h5>
+                        <span class="card-title"> See All</span>
+
+                      </div>
+                      <!-- User 1 -->
+                      <nav class="header-nav mb-4">
+                        <ul class="d-flex align-items-center justify-content-between">
+
+                          <li class="nav-item d-block d-lg-none">
+                            <a class="nav-link nav-icon search-bar-toggle " href="#">
+                              <i class="bi bi-search"></i>
+                            </a>
+                          </li><!-- End Search Icon-->
+
+                          <li class="nav-item dropdown pe-3">
+                            <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#"
+                              data-bs-toggle="dropdown">
+                              <div>
+                                <img src="/assets/img/om.jpg" alt="Profile" class="rounded-circle ">
+                              </div>
+                              <div class="my-profile ms-1">
+                                <h2 class="d-none d-md-block fs-6 ps-2 fw-bold">ओमप्रकाS ⚡</h2>
+                                <span class="d-none d-md-block dropdown-toggle ps-2 fw-semibold">Omprakash Jat</span>
+                              </div>
+                              <div class="ms-5">
+                              </div>
+                            </a><!-- End Profile Iamge Icon -->
+
+
+                          </li><!-- End Profile Nav -->
+                          <h2 class="d-none d-md-block fs-6 ps-2 fw-bold text-info"> Follow</h2>
+
+                        </ul>
+                      </nav>
+                      <!-- User 2 -->
+                      <nav class="header-nav mb-4 justify-content-between">
+                        <ul class="d-flex align-items-center">
+
+                          <li class="nav-item d-block d-lg-none">
+                            <a class="nav-link nav-icon search-bar-toggle " href="#">
+                              <i class="bi bi-search"></i>
+                            </a>
+                          </li><!-- End Search Icon-->
+
+                          <li class="nav-item dropdown pe-3">
+                            <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#"
+                              data-bs-toggle="dropdown">
+                              <div>
+                                <img src="/assets/img/sam.jpg" alt="Profile" class="rounded-circle ">
+                              </div>
+                              <div class="my-profile ms-1">
+                                <h2 class="d-none d-md-block fs-6 ps-2 fw-bold">samalexe791</h2>
+                                <span class="d-none d-md-block dropdown-toggle ps-2 fw-semibold"> Fashion Model</span>
+                              </div>
+                              <div class="ms-5">
+                              </div>
+                            </a><!-- End Profile Iamge Icon -->
+
+
+                          </li><!-- End Profile Nav -->
+                          <h2 class="d-none d-md-block fs-6 ps-2 fw-bold text-info">Follow</h2>
+                        </ul>
+                      </nav>
+                      <!-- User 3 -->
+                      <nav class="header-nav mb-4">
+                        <ul class="d-flex align-items-center">
+
+                          <li class="nav-item d-block d-lg-none">
+                            <a class="nav-link nav-icon search-bar-toggle " href="#">
+                              <i class="bi bi-search"></i>
+                            </a>
+                          </li><!-- End Search Icon-->
+
+                          <li class="nav-item dropdown pe-3">
+                            <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#"
+                              data-bs-toggle="dropdown">
+                              <div>
+                                <img src="/assets/img/bhavin.jpg" alt="Profile" class="rounded-circle ">
+                              </div>
+                              <div class="my-profile ms-1">
+                                <h2 class="d-none d-md-block fs-6 ps-2 fw-bold">BM.25.7</h2>
+                                <span class="d-none d-md-block dropdown-toggle ps-2 fw-semibold"> Bhavin Madhani
+                                  ®</span>
+                              </div>
+                              <div class="ms-5">
+                                <h2 class="d-none d-md-block fs-6 ps-2 fw-bold text-info"> </h2>
+                              </div>
+                            </a><!-- End Profile Iamge Icon -->
+
+
+                          </li><!-- End Profile Nav -->
+
+                        </ul>
+                      </nav>
+                      <!-- User 4 -->
+                      <nav class="header-nav mb-4">
+                        <ul class="d-flex align-items-center">
+
+                          <li class="nav-item d-block d-lg-none">
+                            <a class="nav-link nav-icon search-bar-toggle " href="#">
+                              <i class="bi bi-search"></i>
+                            </a>
+                          </li><!-- End Search Icon-->
+
+                          <li class="nav-item dropdown pe-3">
+                            <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#"
+                              data-bs-toggle="dropdown">
+                              <div>
+                                <img src="/assets/img/kash.jpg" alt="Profile" class="rounded-circle ">
+                              </div>
+                              <div class="my-profile ms-1">
+                                <h2 class="d-none d-md-block fs-6 ps-2 fw-bold">__smarty__</h2>
+                                <span class="d-none d-md-block ps-2 fw-semibold"> Kashyap</span>
+                              </div>
+                              <div class="ms-5">
+                                <h2 class="d-none d-md-block fs-6 ps-2 fw-bold text-info"> </h2>
+                              </div>
+                            </a><!-- End Profile Iamge Icon -->
+
+
+                          </li><!-- End Profile Nav -->
+
+                        </ul>
+                      </nav>
+                      <!-- User 5 -->
+                      <nav class="header-nav mb-4">
+                        <ul class="d-flex align-items-center">
+
+                          <li class="nav-item d-block d-lg-none">
+                            <a class="nav-link nav-icon search-bar-toggle " href="#">
+                              <i class="bi bi-search"></i>
+                            </a>
+                          </li><!-- End Search Icon-->
+
+                          <li class="nav-item dropdown pe-3">
+                            <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#"
+                              data-bs-toggle="dropdown">
+                              <div>
+                                <img src="/assets/img/heet.jpg" alt="Profile" class="rounded-circle ">
+                              </div>
+                              <div class="my-profile ms-1">
+                                <h2 class="d-none d-md-block fs-6 ps-2 fw-bold">_.morkar._</h2>
+                                <span class="d-none d-md-block ps-2 fw-semibold">Heet Morker</span>
+                              </div>
+                              <div class="ms-5">
+                                <h2 class="d-none d-md-block fs-6 ps-2 fw-bold text-info"> </h2>
+                              </div>
+                            </a><!-- End Profile Iamge Icon -->
+
+
+                          </li><!-- End Profile Nav -->
+
+                        </ul>
+                      </nav>
+                      <!-- User 6 -->
+                      <nav class="header-nav mb-4">
+                        <ul class="d-flex align-items-center">
+
+                          <li class="nav-item d-block d-lg-none">
+                            <a class="nav-link nav-icon search-bar-toggle " href="#">
+                              <i class="bi bi-search"></i>
+                            </a>
+                          </li><!-- End Search Icon-->
+
+                          <li class="nav-item dropdown pe-3">
+                            <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#"
+                              data-bs-toggle="dropdown">
+                              <div>
+                                <img src="/assets/img/priya.jpg" alt="Profile" class="rounded-circle ">
+                              </div>
+                              <div class="my-profile ms-1">
+                                <h2 class="d-none d-md-block fs-6 ps-2 fw-bold">priyanshumishra356</h2>
+                                <span class="d-none d-md-block ps-2 fw-semibold">PRIYANSHU MISHRA</span>
+                              </div>
+                              <div class="ms-5">
+                                <h2 class="d-none d-md-block fs-6 ps-2 fw-bold text-info"> </h2>
+                              </div>
+                            </a><!-- End Profile Iamge Icon -->
+
+
+                          </li><!-- End Profile Nav -->
+
+                        </ul>
+                      </nav>
+                      <!-- User 7 -->
+                      <nav class="header-nav mb-4">
+                        <ul class="d-flex align-items-center">
+
+                          <li class="nav-item d-block d-lg-none">
+                            <a class="nav-link nav-icon search-bar-toggle " href="#">
+                              <i class="bi bi-search"></i>
+                            </a>
+                          </li><!-- End Search Icon-->
+
+                          <li class="nav-item dropdown pe-3">
+                            <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#"
+                              data-bs-toggle="dropdown">
+                              <div>
+                                <img src="/assets/img/anant.jpg" alt="Profile" class="rounded-circle ">
+                              </div>
+                              <div class="my-profile ms-1">
+                                <h2 class="d-none d-md-block fs-6 ps-2 fw-bold">anantshah133</h2>
+                                <span class="d-none d-md-block ps-2 fw-semibold">Anant Shah</span>
+                              </div>
+                              <div class="ms-5">
+                                <h2 class="d-none d-md-block fs-6 ps-2 fw-bold text-info"> </h2>
+                              </div>
+                            </a><!-- End Profile Iamge Icon -->
+
+
+                          </li><!-- End Profile Nav -->
+
+                        </ul>
+                      </nav>
+                      <!-- User 8 -->
+                      <nav class="header-nav mb-4">
+                        <ul class="d-flex align-items-center">
+
+                          <li class="nav-item d-block d-lg-none">
+                            <a class="nav-link nav-icon search-bar-toggle " href="#">
+                              <i class="bi bi-search"></i>
+                            </a>
+                          </li><!-- End Search Icon-->
+
+                          <li class="nav-item dropdown pe-3">
+                            <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#"
+                              data-bs-toggle="dropdown">
+                              <div>
+                                <img src="/assets/img/monil.jpg" alt="Profile" class="rounded-circle ">
+                              </div>
+                              <div class="my-profile ms-1">
+                                <h2 class="d-none d-md-block fs-6 ps-2 fw-bold">_monil7_</h2>
+                                <span class="d-none d-md-block ps-2 fw-semibold">ŃÁĶŘÄŃÍ MÓŃÍĻ</span>
+                              </div>
+                              <div class="ms-5">
+                                <h2 class="d-none d-md-block fs-6 ps-2 fw-bold text-info"> </h2>
+                              </div>
+                            </a><!-- End Profile Iamge Icon -->
+
+
+                          </li><!-- End Profile Nav -->
+
+                        </ul>
+                      </nav>
+                      <!-- User 9 -->
+                      <nav class="header-nav mb-4">
+                        <ul class="d-flex align-items-center">
+
+                          <li class="nav-item d-block d-lg-none">
+                            <a class="nav-link nav-icon search-bar-toggle " href="#">
+                              <i class="bi bi-search"></i>
+                            </a>
+                          </li><!-- End Search Icon-->
+
+                          <li class="nav-item dropdown pe-3">
+                            <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#"
+                              data-bs-toggle="dropdown">
+                              <div>
+                                <img src="/assets/img/kevin.jpg" alt="Profile" class="rounded-circle ">
+                              </div>
+                              <div class="my-profile ms-1">
+                                <h2 class="d-none d-md-block fs-6 ps-2 fw-bold">_mr.kevin_</h2>
+                                <span class="d-none d-md-block ps-2 fw-semibold">Kevin Chauhan</span>
+                              </div>
+                              <div class="ms-5">
+                                <h2 class="d-none d-md-block fs-6 ps-2 fw-bold text-info">Follow</h2>
+                              </div>
+                            </a><!-- End Profile Iamge Icon -->
+
+
+                          </li><!-- End Profile Nav -->
+
+                        </ul>
+                      </nav>
                     </div>
                   </div>
-                </section>
-                <!-- End Customers Card -->
+                  <!-- Right Profile Information Start -->
 
 
-
-              </div>
-            </div><!-- End Left side columns -->
-
-            <!-- Right side columns -->
-            <div class="col-lg-4">
-
-              <div id="header" class="header d-flex align-items-center mb-1">
-
-
-                <nav class="header-nav">
-                  <ul class="d-flex align-items-center justify-content-between">
-
-                    <li class="nav-item dropdown pe-3 w-100 ">
-                      <a class="nav-link nav-profile d-flex align-items-center justify-content-between pe-0" href="#"
-                        data-bs-toggle="dropdown">
-                        <div>
-                          <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle ">
-                        </div>
-                        <div class="my-profile ms-1">
-                          <h2 class="d-none d-md-block fs-6 ps-2 fw-bold">i.m.viks</h2>
-                          <span class="d-none d-md-block dropdown-toggle ps-2 fw-semibold"> Vikas Borse</span>
-                        </div>
-                        <div class="">
-                        </div>
-                      </a><!-- End Profile Iamge Icon -->
-
-                    </li><!-- End Profile Nav -->
-                    <h2 class="d-none d-md-block fs-6 ps-2 fw-bold text-info ms-5"> Switch</h2>
-
-                  </ul>
-                </nav>
-
-              </div>
-              <!-- Recent Activity -->
-
-              <div class="card">
-                <div class="filter">
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filter</h6>
-                    </li>
-
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul>
-                </div>
-                <!-- Right Profile Information Start -->
-                <div class="card-body">
-                  <div class="d-flex align-items-center justify-content-between">
-
-                    <h5 class="card-title">Suggested for you </h5>
-                    <span class="card-title"> See All</span>
-
-                  </div>
-                  <!-- User 1 -->
-                  <nav class="header-nav mb-4">
-                    <ul class="d-flex align-items-center justify-content-between">
-
-                      <li class="nav-item d-block d-lg-none">
-                        <a class="nav-link nav-icon search-bar-toggle " href="#">
-                          <i class="bi bi-search"></i>
-                        </a>
-                      </li><!-- End Search Icon-->
-
-                      <li class="nav-item dropdown pe-3">
-                        <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#"
-                          data-bs-toggle="dropdown">
-                          <div>
-                            <img src="/assets/img/om.jpg" alt="Profile" class="rounded-circle ">
-                          </div>
-                          <div class="my-profile ms-1">
-                            <h2 class="d-none d-md-block fs-6 ps-2 fw-bold">ओमप्रकाS ⚡</h2>
-                            <span class="d-none d-md-block dropdown-toggle ps-2 fw-semibold">Omprakash Jat</span>
-                          </div>
-                          <div class="ms-5">
-                          </div>
-                        </a><!-- End Profile Iamge Icon -->
-
-
-                      </li><!-- End Profile Nav -->
-                      <h2 class="d-none d-md-block fs-6 ps-2 fw-bold text-info"> Follow</h2>
-
-                    </ul>
-                  </nav>
-                  <!-- User 2 -->
-                  <nav class="header-nav mb-4 justify-content-between">
-                    <ul class="d-flex align-items-center">
-
-                      <li class="nav-item d-block d-lg-none">
-                        <a class="nav-link nav-icon search-bar-toggle " href="#">
-                          <i class="bi bi-search"></i>
-                        </a>
-                      </li><!-- End Search Icon-->
-
-                      <li class="nav-item dropdown pe-3">
-                        <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#"
-                          data-bs-toggle="dropdown">
-                          <div>
-                            <img src="/assets/img/sam.jpg" alt="Profile" class="rounded-circle ">
-                          </div>
-                          <div class="my-profile ms-1">
-                            <h2 class="d-none d-md-block fs-6 ps-2 fw-bold">samalexe791</h2>
-                            <span class="d-none d-md-block dropdown-toggle ps-2 fw-semibold"> Fashion Model</span>
-                          </div>
-                          <div class="ms-5">
-                          </div>
-                        </a><!-- End Profile Iamge Icon -->
-
-
-                      </li><!-- End Profile Nav -->
-                      <h2 class="d-none d-md-block fs-6 ps-2 fw-bold text-info">Follow</h2>
-                    </ul>
-                  </nav>
-                  <!-- User 3 -->
-                  <nav class="header-nav mb-4">
-                    <ul class="d-flex align-items-center">
-
-                      <li class="nav-item d-block d-lg-none">
-                        <a class="nav-link nav-icon search-bar-toggle " href="#">
-                          <i class="bi bi-search"></i>
-                        </a>
-                      </li><!-- End Search Icon-->
-
-                      <li class="nav-item dropdown pe-3">
-                        <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#"
-                          data-bs-toggle="dropdown">
-                          <div>
-                            <img src="/assets/img/bhavin.jpg" alt="Profile" class="rounded-circle ">
-                          </div>
-                          <div class="my-profile ms-1">
-                            <h2 class="d-none d-md-block fs-6 ps-2 fw-bold">BM.25.7</h2>
-                            <span class="d-none d-md-block dropdown-toggle ps-2 fw-semibold"> Bhavin Madhani ®</span>
-                          </div>
-                          <div class="ms-5">
-                            <h2 class="d-none d-md-block fs-6 ps-2 fw-bold text-info"> </h2>
-                          </div>
-                        </a><!-- End Profile Iamge Icon -->
-
-
-                      </li><!-- End Profile Nav -->
-
-                    </ul>
-                  </nav>
-                  <!-- User 4 -->
-                  <nav class="header-nav mb-4">
-                    <ul class="d-flex align-items-center">
-
-                      <li class="nav-item d-block d-lg-none">
-                        <a class="nav-link nav-icon search-bar-toggle " href="#">
-                          <i class="bi bi-search"></i>
-                        </a>
-                      </li><!-- End Search Icon-->
-
-                      <li class="nav-item dropdown pe-3">
-                        <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#"
-                          data-bs-toggle="dropdown">
-                          <div>
-                            <img src="/assets/img/kash.jpg" alt="Profile" class="rounded-circle ">
-                          </div>
-                          <div class="my-profile ms-1">
-                            <h2 class="d-none d-md-block fs-6 ps-2 fw-bold">__smarty__</h2>
-                            <span class="d-none d-md-block ps-2 fw-semibold"> Kashyap</span>
-                          </div>
-                          <div class="ms-5">
-                            <h2 class="d-none d-md-block fs-6 ps-2 fw-bold text-info"> </h2>
-                          </div>
-                        </a><!-- End Profile Iamge Icon -->
-
-
-                      </li><!-- End Profile Nav -->
-
-                    </ul>
-                  </nav>
-                  <!-- User 5 -->
-                  <nav class="header-nav mb-4">
-                    <ul class="d-flex align-items-center">
-
-                      <li class="nav-item d-block d-lg-none">
-                        <a class="nav-link nav-icon search-bar-toggle " href="#">
-                          <i class="bi bi-search"></i>
-                        </a>
-                      </li><!-- End Search Icon-->
-
-                      <li class="nav-item dropdown pe-3">
-                        <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#"
-                          data-bs-toggle="dropdown">
-                          <div>
-                            <img src="/assets/img/heet.jpg" alt="Profile" class="rounded-circle ">
-                          </div>
-                          <div class="my-profile ms-1">
-                            <h2 class="d-none d-md-block fs-6 ps-2 fw-bold">_.morkar._</h2>
-                            <span class="d-none d-md-block ps-2 fw-semibold">Heet Morker</span>
-                          </div>
-                          <div class="ms-5">
-                            <h2 class="d-none d-md-block fs-6 ps-2 fw-bold text-info"> </h2>
-                          </div>
-                        </a><!-- End Profile Iamge Icon -->
-
-
-                      </li><!-- End Profile Nav -->
-
-                    </ul>
-                  </nav>
-                  <!-- User 6 -->
-                  <nav class="header-nav mb-4">
-                    <ul class="d-flex align-items-center">
-
-                      <li class="nav-item d-block d-lg-none">
-                        <a class="nav-link nav-icon search-bar-toggle " href="#">
-                          <i class="bi bi-search"></i>
-                        </a>
-                      </li><!-- End Search Icon-->
-
-                      <li class="nav-item dropdown pe-3">
-                        <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#"
-                          data-bs-toggle="dropdown">
-                          <div>
-                            <img src="/assets/img/priya.jpg" alt="Profile" class="rounded-circle ">
-                          </div>
-                          <div class="my-profile ms-1">
-                            <h2 class="d-none d-md-block fs-6 ps-2 fw-bold">priyanshumishra356</h2>
-                            <span class="d-none d-md-block ps-2 fw-semibold">PRIYANSHU MISHRA</span>
-                          </div>
-                          <div class="ms-5">
-                            <h2 class="d-none d-md-block fs-6 ps-2 fw-bold text-info"> </h2>
-                          </div>
-                        </a><!-- End Profile Iamge Icon -->
-
-
-                      </li><!-- End Profile Nav -->
-
-                    </ul>
-                  </nav>
-                  <!-- User 7 -->
-                  <nav class="header-nav mb-4">
-                    <ul class="d-flex align-items-center">
-
-                      <li class="nav-item d-block d-lg-none">
-                        <a class="nav-link nav-icon search-bar-toggle " href="#">
-                          <i class="bi bi-search"></i>
-                        </a>
-                      </li><!-- End Search Icon-->
-
-                      <li class="nav-item dropdown pe-3">
-                        <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#"
-                          data-bs-toggle="dropdown">
-                          <div>
-                            <img src="/assets/img/anant.jpg" alt="Profile" class="rounded-circle ">
-                          </div>
-                          <div class="my-profile ms-1">
-                            <h2 class="d-none d-md-block fs-6 ps-2 fw-bold">anantshah133</h2>
-                            <span class="d-none d-md-block ps-2 fw-semibold">Anant Shah</span>
-                          </div>
-                          <div class="ms-5">
-                            <h2 class="d-none d-md-block fs-6 ps-2 fw-bold text-info"> </h2>
-                          </div>
-                        </a><!-- End Profile Iamge Icon -->
-
-
-                      </li><!-- End Profile Nav -->
-
-                    </ul>
-                  </nav>
-                  <!-- User 8 -->
-                  <nav class="header-nav mb-4">
-                    <ul class="d-flex align-items-center">
-
-                      <li class="nav-item d-block d-lg-none">
-                        <a class="nav-link nav-icon search-bar-toggle " href="#">
-                          <i class="bi bi-search"></i>
-                        </a>
-                      </li><!-- End Search Icon-->
-
-                      <li class="nav-item dropdown pe-3">
-                        <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#"
-                          data-bs-toggle="dropdown">
-                          <div>
-                            <img src="/assets/img/monil.jpg" alt="Profile" class="rounded-circle ">
-                          </div>
-                          <div class="my-profile ms-1">
-                            <h2 class="d-none d-md-block fs-6 ps-2 fw-bold">_monil7_</h2>
-                            <span class="d-none d-md-block ps-2 fw-semibold">ŃÁĶŘÄŃÍ MÓŃÍĻ</span>
-                          </div>
-                          <div class="ms-5">
-                            <h2 class="d-none d-md-block fs-6 ps-2 fw-bold text-info"> </h2>
-                          </div>
-                        </a><!-- End Profile Iamge Icon -->
-
-
-                      </li><!-- End Profile Nav -->
-
-                    </ul>
-                  </nav>
-                  <!-- User 9 -->
-                  <nav class="header-nav mb-4">
-                    <ul class="d-flex align-items-center">
-
-                      <li class="nav-item d-block d-lg-none">
-                        <a class="nav-link nav-icon search-bar-toggle " href="#">
-                          <i class="bi bi-search"></i>
-                        </a>
-                      </li><!-- End Search Icon-->
-
-                      <li class="nav-item dropdown pe-3">
-                        <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#"
-                          data-bs-toggle="dropdown">
-                          <div>
-                            <img src="/assets/img/kevin.jpg" alt="Profile" class="rounded-circle ">
-                          </div>
-                          <div class="my-profile ms-1">
-                            <h2 class="d-none d-md-block fs-6 ps-2 fw-bold">_mr.kevin_</h2>
-                            <span class="d-none d-md-block ps-2 fw-semibold">Kevin Chauhan</span>
-                          </div>
-                          <div class="ms-5">
-                            <h2 class="d-none d-md-block fs-6 ps-2 fw-bold text-info">Follow</h2>
-                          </div>
-                        </a><!-- End Profile Iamge Icon -->
-
-
-                      </li><!-- End Profile Nav -->
-
-                    </ul>
-                  </nav>
-                </div>
-              </div>
-              <!-- Right Profile Information Start -->
-
-
-            </div><!-- End Right side columns -->
+                </div><!-- End Right side columns -->
 
           </div>
         </section>
@@ -713,6 +764,12 @@
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
 
+  <script>
+      function setImages(imagePath){
+        // console.log(imagePath)
+        console.log(imagePath)
+      }
+  </script>
 </body>
 
 </html>
