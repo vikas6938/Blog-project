@@ -369,12 +369,15 @@
                       <div class="row justify-content-center">
                         <div class="w-100 ms-2">
                           <form action="/dashboard" method="post" enctype="multipart/form-data">
-                            <textarea name="post" id="" cols="50" rows="3" class="form-control w-100 bg-transparent  mb-3   "
-                              placeholder="What is happening ?"></textarea>
+                            <label for="title" class="form-label">Post Title</label>
+                            <input type="text" name="title" class="form-control" id="title" aria-describedby="title">
+                            <label for="post" class="form-label mt-4">Post description</label>
+                            <textarea name="post" required id="post" cols="50" rows="3" class="form-control w-100 bg-transparent  mb-3   "
+                              placeholder="Write your description....."></textarea>
                             <div class="d-flex justify-content-between align-items-center ">
                               <label class="btn text-primary fs-6  border-1  border-primary ">
                                 <i class="bi bi-card-image "></i> image
-                                <input type="file" class="d-none" name="file" />
+                                <input type="file" class="d-none" name="file" required />
                               </label>
                               <button class="btn btn-primary  rounded-5 px-4">Post</button>
                             </div>
@@ -385,14 +388,17 @@
                             <% post.forEach((post)=>{ %>
                               <div class="col-lg-6">
                                 <div class="card overflow-hidden ">
-                                  <div class="card-body" style="height: 450px;">
+                                  <div class="card-body">
                                     <% if (post) { %>
                                       <div class="d-flex  align-items-center ">
                                         <h5 class="card-title me-2 ">@<%= post.name %>
                                         </h5><span> <i class="bi bi-patch-check-fill text-primary"></i></span>
                                         <span class="ms-2">
-                                          <%= post.time %>
+                                          <%= new Date(parseInt(post.time)).toLocaleString() %>
                                         </span>
+                                      </div>
+                                      <div>
+                                        <h6><%= post.title %></h6>
                                       </div>
                                       <% } %>
                                         <p>
@@ -753,18 +759,6 @@
     </div><!-- End #main -->
   </div>
   <!-- ======= Footer ======= -->
-  <footer id="footer" class="footer">
-    <div class="copyright">
-      &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
-    </div>
-    <div class="credits">
-      <!-- All the links in the footer should remain intact. -->
-      <!-- You can delete the links only if you purchased the pro version. -->
-      <!-- Licensing information: https://bootstrapmade.com/license/ -->
-      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-      Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-    </div>
-  </footer><!-- End Footer -->
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
       class="bi bi-arrow-up-short"></i></a>

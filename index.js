@@ -108,17 +108,19 @@ app.get('/dashboard', auth, async (req, res) => {
 
 app.post('/dashboard', auth, async (req, res) => {
   const user = req.cookies.user;
+  console.log(user)
   upload(req, res, async function(){
     if(req.file){
       var details = {
         file : req.file.filename,
         post : req.body.post,
         time : Date.now(),
-        name : user.name
+        name : user.name,
+        title: req.body.title,
       }
       const post = await postModel(details)
-      const result = post.save()
-      res.redirect('/')
+      const result = await post.save()
+      res.redirect('/dashboard')
     }else{
       console.log("error")
     }
@@ -145,7 +147,7 @@ app.post('/login', async (req, res) => {
     console.log(user)
     if (user) {
       if (user.password == password) {
-        let minute = 60 * 6000;
+        let minute = 60 * 60000;
         res.cookie('user', user, { maxAge: minute });
         res.redirect('/dashboard');
       } else {
