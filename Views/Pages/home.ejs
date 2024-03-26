@@ -367,28 +367,47 @@
                     <!-- Customers Card -->
                     <section class="section ">
                       <div class="row justify-content-center">
-
-                        <div class="col-lg-12">
-                          <div class="card">
-                            <div class="card-body">
-                              <h5 class="card-title">Parul Univercity
-
-                                <svg aria-label="Verified" class="x1lliihq x1n2onr6" fill="rgb(0, 149, 246)" height="12"
-                                  role="img" viewBox="0 0 40 40" width="12">
-                                  <title>Verified</title>
-                                  <path
-                                    d="M19.998 3.094 14.638 0l-2.972 5.15H5.432v6.354L0 14.64 3.094 20 0 25.359l5.432 3.137v5.905h5.975L14.638 40l5.36-3.094L25.358 40l3.232-5.6h6.162v-6.01L40 25.359 36.905 20 40 14.641l-5.248-3.03v-6.46h-6.419L25.358 0l-5.36 3.094Zm7.415 11.225 2.254 2.287-11.43 11.5-6.835-6.93 2.244-2.258 4.587 4.581 9.18-9.18Z"
-                                    fill-rule="evenodd"></path>
-                                </svg>
-                              </h5>
-
-                              <!-- Line Chart -->
-
-                              <!-- End Line CHart -->
-
+                        <div class="w-100 ms-2">
+                          <form action="/dashboard" method="post" enctype="multipart/form-data">
+                            <textarea name="post" id="" cols="50" rows="3" class="form-control w-100 bg-transparent  mb-3   "
+                              placeholder="What is happening ?"></textarea>
+                            <div class="d-flex justify-content-between align-items-center ">
+                              <label class="btn text-primary fs-6  border-1  border-primary ">
+                                <i class="bi bi-card-image "></i> image
+                                <input type="file" class="d-none" name="file" />
+                              </label>
+                              <button class="btn btn-primary  rounded-5 px-4">Post</button>
                             </div>
-                          </div>
+                          </form>
                         </div>
+                        <section class="section">
+                          <div class="row">
+                            <% post.forEach((post)=>{ %>
+                              <div class="col-lg-6">
+                                <div class="card overflow-hidden ">
+                                  <div class="card-body" style="height: 450px;">
+                                    <% if (post) { %>
+                                      <div class="d-flex  align-items-center ">
+                                        <h5 class="card-title me-2 ">@<%= post.name %>
+                                        </h5><span> <i class="bi bi-patch-check-fill text-primary"></i></span>
+                                        <span class="ms-2">
+                                          <%= post.time %>
+                                        </span>
+                                      </div>
+                                      <% } %>
+                                        <p>
+                                          <%= post.post %>
+                                        </p>
+                                        <div class="rounded-3 overflow-hidden ">
+                                          <img src="<%= post.file %>" alt="" class="img-fluid  ">
+                                        </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <%})%>
+                    
+                          </div>
+                        </section>
                       </div>
                     </section>
                     <!-- End Customers Card -->

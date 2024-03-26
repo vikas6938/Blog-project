@@ -95,8 +95,34 @@ const auth = (req, res, next) => {
   }
 }
 
-app.get('/dashboard', auth, function (req, res) {
-  res.render('./Pages/home', { users: arr })
+// app.get('/dashboard', auth, function (req, res) {
+//   res.render('./Pages/home', {  })
+// })
+
+app.get('/dashboard', auth, async (req, res) => {
+  const post = await postModel.find({}) 
+  const user = req.cookies.user;
+  console.log(post)
+  res.render('./Pages/home', { post: post, user: user, users: arr });
+})
+
+app.post('/dashboard', auth, async (req, res) => {
+  const user = req.cookies.user;
+  upload(req, res, async function(){
+    if(req.file){
+      var details = {
+        file : req.file.filename,
+        post : req.body.post,
+        time : Date.now(),
+        name : user.name
+      }
+      const post = await postModel(details)
+      const result = post.save()
+      res.redirect('/')
+    }else{
+      console.log("error")
+    }
+  })
 })
 
 app.get('/', function (req, res) {
